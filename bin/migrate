@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+Color_Off='\033[0m'       # Text Reset
+BGreen='\033[32m'         # Green
+BRed='\033[31m'           # Red
+
+if [[ -n "$1" ]]; then
+    service=$1
+    ./bin/startdb ${service}
+    ./sbt "project ${service}" compile flywayMigrate slickCodegen fmt
+    ./bin/stopdb
+    echo -e "${BGreen}Service ${service} is migrated.${Color_Off}"
+else
+   echo -e "${BRed}Service name is missing.${Color_Off}"
+   echo -e "Usage:"
+   echo -e "migrate user-service"
+   exit 1
+fi

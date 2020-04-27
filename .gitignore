@@ -1,0 +1,10 @@
+target
+.sbtopts
+project/.sbt
+.bloop
+.metals
+project/metals.sbt
+.idea
+coursier
+.DS_Store
+logs

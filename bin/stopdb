@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+Color_Off='\033[0m'       # Text Reset
+BGreen='\033[32m'         # Green
+BRed='\033[31m'           # Red
+
+docker stop endpoints-postgres
+docker rm endpoints-postgres

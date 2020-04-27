@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+Color_Off='\033[0m'       # Text Reset
+BGreen='\033[32m'         # Green
+BRed='\033[31m'           # Red
+
+if [[ -n "$1" ]]; then
+    database=$1
+    docker run -p 55432:5432 -d \
+        --name endpoints-postgres \
+        -e POSTGRES_USER=postgres \
+        -e POSTGRES_PASSWORD=postgres \
+        -e POSTGRES_DB=${database} \
+        postgres
+    echo -e "${BGreen}Database ${database} is started. ${Color_Off}"
+else
+   echo -e "${BRed}Database name is missing. ${Color_Off}"
+   echo -e "Usage:"
+   echo -e "startdb user-service"
+   exit 1
+fi

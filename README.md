@@ -34,3 +34,33 @@ To stop postgres database server run:
 ```
 
 It will stop and remove postgres docker container.
+
+## Api examples
+
+To try this api examples first start database and **user-service**.
+
+### Create user
+
+```bash
+curl -X POST localhost:9000/users -d "{\"name\":\"Josip\", \"age\": 30}"
+```
+
+### Get user by id 
+
+```bash
+curl localhost:9000/users/1 | jq
+```
+
+### List all users
+
+```bash
+curl localhost:9000/users | jq
+```
+
+## Authors
+
+Managed by [jkobejs](https://github.com/jkobejs)
+
+## License
+
+Apache 2 Licensed. See LICENSE for full details
